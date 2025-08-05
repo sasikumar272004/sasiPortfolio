@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Akaya+Kanadaka&family=Barriecito&family=Bitcount+Prop+Double:wght@100..900&family=Caveat:wght@400..700&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Galindo&family=Gloria+Hallelujah&family=Jaini&family=Lakki+Reddy&family=Major+Mono+Display&family=Permanent+Marker&family=Playwrite+HU:wght@100..400&family=Poiret+One&family=Ponomar&family=Protest+Riot&family=Rock+Salt&family=Smooch+Sans:wght@100..900&family=Spicy+Rice&display=swap');
+@import "tailwindcss";
+
+.ss{
+ font-family: "Poiret One", sans-serif;  color: #d4d4d4;
+  margin-top: 2px;
+
+  /* Gradient Text */
+  background: linear-gradient(to bottom, #ffffff, #000000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+
+  /* Matching drop shadow (white to black gradient simulation) */
+  filter: 
+    drop-shadow(0 2px 1px rgba(255, 255, 255, 0.1))  /* lightest shadow on top */
+    drop-shadow(0 4px 2px rgba(150, 150, 150, 0.15)) /* middle gray */
+    drop-shadow(0 6px 3px rgba(0, 0, 0, 0.25));      /* darkest at bottom */
+
+}
+
+.mt {
+  font-family: "Exo 2", sans-serif;
+  font-weight: 400;
+  letter-spacing: 5px;
+  margin-top: 20px;
+
+  /* Gradient Text */
+  background: linear-gradient(to bottom, #ffffff, #000000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+
+  /* Matching drop shadow (white to black gradient simulation) */
+  filter: 
+    drop-shadow(0 2px 1px rgba(255, 255, 255, 0.1))  /* lightest shadow on top */
+    drop-shadow(0 4px 2px rgba(150, 150, 150, 0.15)) /* middle gray */
+    drop-shadow(0 6px 3px rgba(0, 0, 0, 0.25));      /* darkest at bottom */
+}
+.s {
+  font-family: "Poiret One", sans-serif;
+  color: #636161; /* better for glowing effect */
+  line-height: 1.4;
+  text-shadow:
+    0 0 4px rgba(255, 255, 255, 0.2),   /* soft outer glow */
+    0 0 10px rgba(150, 150, 150, 0.1),  /* mid glow */
+    0 0 20px rgba(255, 255, 255, 0.1);  /* intense glow */
+  filter:
+    drop-shadow(0 0 50px rgba(255, 255, 255, 0.2))
+    drop-shadow(0 0 60px rgba(255, 255, 255, 0.25));
+}
+
+
+
+
+

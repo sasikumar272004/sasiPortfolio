@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+
+/* Optional Glow Animation */
+@keyframes glow {
+  0%, 100% {
+    text-shadow: 0 0 10px #fbbf24, 0 0 20px #fbbf24;
+  }
+  50% {
+    text-shadow: 0 0 20px #fbbf24, 0 0 30px #fbbf24;
+  }
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* Lenis smooth scroll styles */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Ensure smooth scrolling works properly */
+body {
+  overflow-x: hidden;
+}
