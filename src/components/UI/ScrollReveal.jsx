@@ -67,8 +67,8 @@ const ScrollReveal = ({
         scrollTrigger: {
           trigger: el,
           scroller,
-          start: 'top 80%',
-          end: wordAnimationEnd,
+          start: 'top 70%',
+          end: 'top 8%',
           scrub: true,
         },
       }
@@ -101,12 +101,12 @@ const ScrollReveal = ({
   return (
    <h2
   ref={containerRef}
-  className={`my-40 px-4 sm:px-8 text-center flex justify-center items-center ${containerClassName}`}
+  className={`my-20 px-4 sm:px-8  ${containerClassName}`}
 >
   <p
     className={`
       
-      text-[clamp(1.6rem,4vw,3rem)]
+      text-[clamp(2rem,2vw,4rem)]
       
       
       s

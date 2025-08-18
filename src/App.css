@@ -6,7 +6,7 @@
   margin-top: 2px;
 
   /* Gradient Text */
-  background: linear-gradient(to bottom, #ffffff, #000000);
+  background: linear-gradient(to bottom, #ffffff, #5e5d5d , #000000);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -22,12 +22,13 @@
 
 .mt {
   font-family: "Exo 2", sans-serif;
-  font-weight: 400;
+
   letter-spacing: 5px;
   margin-top: 20px;
+  
 
   /* Gradient Text */
-  background: linear-gradient(to bottom, #ffffff, #000000);
+  background: linear-gradient(to bottom, #ffffff, #5e5d5d , #000000);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -41,17 +42,69 @@
 }
 .s {
   font-family: "Poiret One", sans-serif;
-  color: #636161; /* better for glowing effect */
+  color: #969696; /* better for glowing effect */
   line-height: 1.4;
-  text-shadow:
-    0 0 4px rgba(255, 255, 255, 0.2),   /* soft outer glow */
-    0 0 10px rgba(150, 150, 150, 0.1),  /* mid glow */
-    0 0 20px rgba(255, 255, 255, 0.1);  /* intense glow */
-  filter:
-    drop-shadow(0 0 50px rgba(255, 255, 255, 0.2))
-    drop-shadow(0 0 60px rgba(255, 255, 255, 0.25));
+ }
+
+.sss{
+   font-family: "Poiret One", sans-serif;  color: #d4d4d4;
+
+  background: linear-gradient(to bottom, #ffffff, #5e5d5d , #000000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
 }
 
+.s1{
+  background: linear-gradient(
+  to bottom,
+  #fafafa 0%,
+  #d6d6d6 25%,
+  #b0b0b0 50%,
+  #d6d6d6 75%,
+  #fafafa 100%
+);
+
+  background-clip: text;
+
+}
+
+
+.gs{
+background: linear-gradient(
+  to bottom,
+  #fafafa 10%,
+  #bdbdbd 25%,
+  #b0b0b0 50%,
+  #cbcbcb 80%,
+  #fafafa 100%
+);
+   -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+
+}
+
+.gss{
+  font-family: "Poiret One", sans-serif; 
+   background: linear-gradient(
+  to bottom,
+  #fafafa 0%,
+  #d6d6d6 25%,
+  #b0b0b0 50%,
+  #d6d6d6 75%,
+  #fafafa 100%
+);
+  background-size: 200% auto;
+  background-position: center;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  font-weight: 600;
+}
 
 
 
