@@ -39,7 +39,7 @@ const Skills = () => {
     <div
       ref={sectionRef}
       id="about"
-      className="bg-white h-fit relative flex flex-wrap py-25 lg:flex-nowrap overflow-hidden px-4"
+      className="bg-white h-fit relative flex flex-wrap pb-25 lg:flex-nowrap overflow-hidden px-4"
     >
       {/* LEFT MAIN GRID */}
       <div className="grid grid-cols-2 gap-4 px-4 py-10 w-full lg:w-1/2">

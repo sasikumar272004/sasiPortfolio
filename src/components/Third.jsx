@@ -34,20 +34,32 @@ const Third = () => {
   };
 
   const colors = {
-      pageGradient: "from-[#f4f4f6] via-[#e0e0e5] to-[#d1d1d8]",
-  ballpit: ["#AF47D2", "#E8FFCE", "#98EECC", "#F9E400", "#D2FF72"],
-  headingLight: "#fefefe",
-  headingAccent: "#D2FF72",   // electric cyan
-  subheading: "#c7c7c7",
-  subheadingAccent: "#9c9c9c",
-  paragraph: "#9a9a9a",
-  formText: "#333333",
-  formAccent: "#D2FF72",
-  inputBg: "bg-white/20",
-  inputBorder: "border-gray-300",
-  buttonGradient: "from-[#D2FF72] to-[#FFF7D1]",   // cyan → blue
-  buttonHoverGradient: "from-[#0040ff] via-[#00aaff] to-[#99ccff]",
-  };
+  pageGradient: "from-[#ececec] via-[#d9d9de] to-[#c4c4cb]",
+
+  ballpit: [
+    "#A4DD00", // bold purple accent
+    "#f0f1e8", // dusty lemon-grey
+    "#e6e7d9", // muted lemon-grey
+    "#FCF259", // soft dusty lemon mist
+    "#cddf85", // faded warm grey
+  ],
+
+  headingLight: "#f8f8f8",
+  headingAccent: "#cddf85",   // dusty muted lemon instead of neon
+  subheading: "#b0b0b0",
+  subheadingAccent: "#8b8b8b",
+  paragraph: "#7a7a7a",
+
+  formText: "#2d2d2d",
+  formAccent: "#cddf85", // toned down lemon accent
+
+  inputBg: "bg-white/15",
+  inputBorder: "border-gray-400",
+
+  buttonGradient: "from-[#cddf85] to-[#e6e6d4]",   // muted lemon → dusty ivory
+  buttonHoverGradient: "from-[#3d3d3d] via-[#555555] to-[#777777]", // bold dusty steel hover
+};
+
 
   return (
     <div
@@ -64,10 +76,10 @@ const Third = () => {
           {/* Ballpit Background Layer */}
           <div className="absolute inset-0 z-0">
             <Ballpit
-              count={70}
+              count={60}
               gravity={0.25}
               friction={1}
-              wallBounce={1}
+              wallBounce={.5}
               followCursor={true}
               colors={colors.ballpit}
             />
