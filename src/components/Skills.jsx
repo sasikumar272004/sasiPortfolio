@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import SpotlightCard from "./UI/SpotLightCard";
+
 import Carousel from "./UI/Carousel";
 import Carousel1 from "./UI/Carousel1";
 import PixelTransition from "./UI/PixelTransition";
@@ -79,11 +79,8 @@ const Skills = () => {
             </div>
           </div>
 
-          <div className="flex items-center justify-center h-[40%] animate-on-scroll">
-            <SpotlightCard
-              spotlightColor="#57564F"
-              className="w-full h-full rounded-2xl bg-gradient-to-b from-[#f2f2f2] via-[#e0e0e0] to-[#ffffff] shadow-2xl overflow-hidden relative p-8 flex flex-col justify-center items-center text-center"
-            >
+          <div className="flex items-center justify-center h-[40%] border-2  border-black rounded-4xl animate-on-scroll">
+          
               <div className="space-y-3">
                 <h2 className="text-2xl font-light tracking-widest text-gray-500 uppercase">
                   Define
@@ -95,7 +92,6 @@ const Skills = () => {
                   Deliver
                 </h2>
               </div>
-            </SpotlightCard>
           </div>
         </div>
       </div>
