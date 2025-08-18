@@ -80,17 +80,24 @@ const GridMotion = ({ items = [], gradientColor = "#0000" }) => {
                     className="relative"
                     style={{ width: "350px", height: "250px" }}
                   >
-                    <div className="relative w-full h-full overflow-hidden rounded-[10px] bg-[#111] flex items-center justify-center text-white text-[1.5rem]">
-                      {content && (content.includes("/assets/") ? (
-                        <img
-                          src={content}
-                          alt={`grid-item-${itemIndex}`}
-                          className="w-full h-full object-cover absolute top-0 left-0"
-                        />
-                      ) : (
-                        <div className="p-4 text-center z-[1]">{content}</div>
-                      ))}
-                    </div>
+                    <a
+                      href="https://github.com/sasikumar272004"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block w-full h-full"
+                    >
+                      <div className="relative w-full h-full overflow-hidden rounded-[10px] bg-[#111] flex items-center justify-center text-white text-[1.5rem] cursor-pointer hover:scale-105 transition-transform">
+                        {content && (content.includes("/assets/") ? (
+                          <img
+                            src={content}
+                            alt={`grid-item-${itemIndex}`}
+                            className="w-full h-full object-cover absolute top-0 left-0"
+                          />
+                        ) : (
+                          <div className="p-4 text-center z-[1]">{content}</div>
+                        ))}
+                      </div>
+                    </a>
                   </div>
                 );
               })}

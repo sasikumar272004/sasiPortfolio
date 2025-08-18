@@ -84,7 +84,7 @@ const Second = () => {
 
 
 
-        {/* <Hyperspeed
+        <Hyperspeed
   effectOptions={{
     onSpeedUp: () => { },
     onSlowDown: () => { },
@@ -132,7 +132,7 @@ const Second = () => {
 
 
   }}
-/> */}
+/>
       </div>
 
       

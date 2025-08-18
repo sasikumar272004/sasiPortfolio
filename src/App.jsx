@@ -11,7 +11,7 @@ import Skills from './components/Skills';
 
 const App = () => {
   return (
-    <div className="overflow-x-hidden">
+    <div className="overflow-hidden">
       {/* Navbar is fixed, visible across all pages */}
       <Navbar />
 

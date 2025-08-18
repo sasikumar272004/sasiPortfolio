@@ -26,10 +26,10 @@ import s22 from "../assets/s22.png";
 import s23 from "../assets/s23.png";
 
 const items = [
-  s5, s5, s2, s10, s3,
+  s5, s5, s2, s19, s3,
   s6, s7, s8, s9, s4,
-  s18, s11, s13, s14, s15,
-  s19, s17, s21, s16, s8,s22,s23,s1,s12,s20,s14,s22
+  s11, s18, s13, s14, s15,
+  s10, s17, s21, s16, s8,s22,s23,s1,s12,s20,s14,s22
 ];
 
 const Fourth = () => {

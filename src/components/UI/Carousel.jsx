@@ -11,36 +11,37 @@ import {
 
 const DEFAULT_ITEMS = [
   {
-    title: "Text Animations",
-    description: "Cool text animations for your projects.",
+    title: "Responsive Web Design",
+    description: "Crafting fully responsive, mobile-first websites with modern layouts and cross-browser compatibility.",
     id: 1,
-    icon: <FiFileText className="h-[16px] w-[16px] text-white" />,
+    icon: <FiLayout className="h-[16px] w-[16px] text-white" />,
   },
   {
-    title: "Animations",
-    description: "Smooth animations for your projects.",
+    title: "Advanced Animations & Interactions",
+    description: "Implementing smooth, interactive animations using Framer Motion, GSAP, and CSS for an engaging user experience.",
     id: 2,
     icon: <FiCircle className="h-[16px] w-[16px] text-white" />,
   },
   {
-    title: "Components",
-    description: "Reusable components for your projects.",
+    title: "Component Architecture",
+    description: "Building reusable, scalable, and maintainable UI components for large-scale applications.",
     id: 3,
     icon: <FiLayers className="h-[16px] w-[16px] text-white" />,
   },
   {
-    title: "Backgrounds",
-    description: "Beautiful backgrounds and patterns for your projects.",
+    title: "UI/UX Design Implementation",
+    description: "Translating modern UI/UX designs into pixel-perfect, interactive frontend experiences.",
     id: 4,
-    icon: <FiLayout className="h-[16px] w-[16px] text-white" />,
+    icon: <FiFileText className="h-[16px] w-[16px] text-white" />,
   },
   {
-    title: "Common UI",
-    description: "Common UI components are coming soon!",
+    title: "Full-Stack Integration",
+    description: "Connecting frontend interfaces with APIs, managing state, and creating dynamic web applications with React, Next.js, or other frameworks.",
     id: 5,
     icon: <FiCode className="h-[16px] w-[16px] text-white" />,
   },
 ];
+
 
 const DRAG_BUFFER = 0;
 const VELOCITY_THRESHOLD = 500;
