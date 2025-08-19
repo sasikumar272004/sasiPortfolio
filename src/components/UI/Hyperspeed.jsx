@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import * as THREE from 'three';
-import { BloomEffect, EffectComposer, EffectPass, RenderPass, SMAAEffect, SMAAPreset } from 'postprocessing';
+import { BloomEffect, EffectComposer, EffectPass, RenderPass } from 'postprocessing';
 
 const Hyperspeed = ({ effectOptions = {
   onSpeedUp: () => { },
@@ -15,7 +15,7 @@ const Hyperspeed = ({ effectOptions = {
   speedUp: 2,
   carLightsFade: 0.4,
   totalSideLightSticks: 20,
-  lightPairsPerRoadWay: 40,
+  lightPairsPerRoadWay: 20, // Reduced from 40
   shoulderLinesWidthPercentage: 0.05,
   brokenLinesWidthPercentage: 0.1,
   brokenLinesLengthPercentage: 0.5,
@@ -38,7 +38,7 @@ const Hyperspeed = ({ effectOptions = {
     rightCars: [0x03B3C3, 0x0E5EA5, 0x324555],
     sticks: 0x03B3C3,
   }
-} }) => {
+}}) => {
   const hyperspeed = useRef(null);
   const appRef = useRef(null);
   
@@ -53,6 +53,7 @@ const Hyperspeed = ({ effectOptions = {
       }
     }
 
+    // Distortion configurations
     const mountainUniforms = {
       uFreq: { value: new THREE.Vector3(3, 6, 10) },
       uAmp: { value: new THREE.Vector3(30, 30, 20) }
@@ -148,37 +149,6 @@ const Hyperspeed = ({ effectOptions = {
           return distortion.multiply(lookAtAmp).add(lookAtOffset);
         }
       },
-      LongRaceDistortion: {
-        uniforms: LongRaceUniforms,
-        getDistortion: `
-          uniform vec2 uFreq;
-          uniform vec2 uAmp;
-          #define PI 3.14159265358979
-          vec3 getDistortion(float progress){
-            float camProgress = 0.0125;
-            return vec3( 
-              sin(progress * PI * uFreq.x + uTime) * uAmp.x - sin(camProgress * PI * uFreq.x + uTime) * uAmp.x,
-              sin(progress * PI * uFreq.y + uTime) * uAmp.y - sin(camProgress * PI * uFreq.y + uTime) * uAmp.y,
-              0.
-            );
-          }
-        `,
-        getJS: (progress, time) => {
-          let camProgress = 0.0125;
-          let uFreq = LongRaceUniforms.uFreq.value;
-          let uAmp = LongRaceUniforms.uAmp.value;
-          let distortion = new THREE.Vector3(
-            Math.sin(progress * Math.PI * uFreq.x + time) * uAmp.x -
-            Math.sin(camProgress * Math.PI * uFreq.x + time) * uAmp.x,
-            Math.sin(progress * Math.PI * uFreq.y + time) * uAmp.y -
-            Math.sin(camProgress * Math.PI * uFreq.y + time) * uAmp.y,
-            0
-          );
-          let lookAtAmp = new THREE.Vector3(1, 1, 0);
-          let lookAtOffset = new THREE.Vector3(0, 0, -5);
-          return distortion.multiply(lookAtAmp).add(lookAtOffset);
-        }
-      },
       turbulentDistortion: {
         uniforms: turbulentUniforms,
         getDistortion: `
@@ -229,132 +199,20 @@ const Hyperspeed = ({ effectOptions = {
           let lookAtOffset = new THREE.Vector3(0, 0, -10);
           return distortion.multiply(lookAtAmp).add(lookAtOffset);
         }
-      },
-      turbulentDistortionStill: {
-        uniforms: turbulentUniforms,
-        getDistortion: `
-          uniform vec4 uFreq;
-          uniform vec4 uAmp;
-          float nsin(float val){
-            return sin(val) * 0.5 + 0.5;
-          }
-          #define PI 3.14159265358979
-          float getDistortionX(float progress){
-            return (
-              cos(PI * progress * uFreq.r) * uAmp.r +
-              pow(cos(PI * progress * uFreq.g * (uFreq.g / uFreq.r)), 2. ) * uAmp.g
-            );
-          }
-          float getDistortionY(float progress){
-            return (
-              -nsin(PI * progress * uFreq.b) * uAmp.b +
-              -pow(nsin(PI * progress * uFreq.a / (uFreq.b / uFreq.a)), 5.) * uAmp.a
-            );
-          }
-          vec3 getDistortion(float progress){
-            return vec3(
-              getDistortionX(progress) - getDistortionX(0.02),
-              getDistortionY(progress) - getDistortionY(0.02),
-              0.
-            );
-          }
-        `
-      },
-      deepDistortionStill: {
-        uniforms: deepUniforms,
-        getDistortion: `
-          uniform vec4 uFreq;
-          uniform vec4 uAmp;
-          uniform vec2 uPowY;
-          float nsin(float val){
-            return sin(val) * 0.5 + 0.5;
-          }
-          #define PI 3.14159265358979
-          float getDistortionX(float progress){
-            return (
-              sin(progress * PI * uFreq.x) * uAmp.x * 2.
-            );
-          }
-          float getDistortionY(float progress){
-            return (
-              pow(abs(progress * uPowY.x), uPowY.y) + sin(progress * PI * uFreq.y) * uAmp.y
-            );
-          }
-          vec3 getDistortion(float progress){
-            return vec3(
-              getDistortionX(progress) - getDistortionX(0.02),
-              getDistortionY(progress) - getDistortionY(0.05),
-              0.
-            );
-          }
-        `
-      },
-      deepDistortion: {
-        uniforms: deepUniforms,
-        getDistortion: `
-          uniform vec4 uFreq;
-          uniform vec4 uAmp;
-          uniform vec2 uPowY;
-          float nsin(float val){
-            return sin(val) * 0.5 + 0.5;
-          }
-          #define PI 3.14159265358979
-          float getDistortionX(float progress){
-            return (
-              sin(progress * PI * uFreq.x + uTime) * uAmp.x
-            );
-          }
-          float getDistortionY(float progress){
-            return (
-              pow(abs(progress * uPowY.x), uPowY.y) + sin(progress * PI * uFreq.y + uTime) * uAmp.y
-            );
-          }
-          vec3 getDistortion(float progress){
-            return vec3(
-              getDistortionX(progress) - getDistortionX(0.02),
-              getDistortionY(progress) - getDistortionY(0.02),
-              0.
-            );
-          }
-        `,
-        getJS: (progress, time) => {
-          const uFreq = deepUniforms.uFreq.value;
-          const uAmp = deepUniforms.uAmp.value;
-          const uPowY = deepUniforms.uPowY.value;
-
-          const getX = p => Math.sin(p * Math.PI * uFreq.x + time) * uAmp.x;
-          const getY = p =>
-            Math.pow(p * uPowY.x, uPowY.y) +
-            Math.sin(p * Math.PI * uFreq.y + time) * uAmp.y;
-
-          let distortion = new THREE.Vector3(
-            getX(progress) - getX(progress + 0.01),
-            getY(progress) - getY(progress + 0.01),
-            0
-          );
-          let lookAtAmp = new THREE.Vector3(-2, -4, 0);
-          let lookAtOffset = new THREE.Vector3(0, 0, -10);
-          return distortion.multiply(lookAtAmp).add(lookAtOffset);
-        }
       }
     }
 
     class App {
       constructor(container, options = {}) {
         this.options = options;
-        if (this.options.distortion == null) {
-          this.options.distortion = {
-            uniforms: distortion_uniforms,
-            getDistortion: distortion_vertex
-          };
-        }
         this.container = container;
         this.renderer = new THREE.WebGLRenderer({
           antialias: false,
-          alpha: true
+          alpha: true,
+          powerPreference: "low-power"
         });
         this.renderer.setSize(container.offsetWidth, container.offsetHeight, false);
-        this.renderer.setPixelRatio(window.devicePixelRatio);
+        this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
         this.composer = new EffectComposer(this.renderer);
         container.append(this.renderer.domElement);
 
@@ -384,6 +242,9 @@ const Hyperspeed = ({ effectOptions = {
         this.clock = new THREE.Clock();
         this.assets = {};
         this.disposed = false;
+        this.isPaused = false;
+        this.targetFPS = 30;
+        this.lastFrameTime = 0;
 
         this.road = new Road(this, options);
         this.leftCarLights = new CarLights(
@@ -412,8 +273,12 @@ const Hyperspeed = ({ effectOptions = {
         this.setSize = this.setSize.bind(this);
         this.onMouseDown = this.onMouseDown.bind(this);
         this.onMouseUp = this.onMouseUp.bind(this);
+        this.pause = this.pause.bind(this);
+        this.resume = this.resume.bind(this);
+        this.visibilityCheck = this.visibilityCheck.bind(this);
 
         window.addEventListener("resize", this.onWindowResize.bind(this));
+        document.addEventListener('visibilitychange', this.visibilityCheck);
       }
 
       onWindowResize() {
@@ -431,50 +296,22 @@ const Hyperspeed = ({ effectOptions = {
         this.bloomPass = new EffectPass(
           this.camera,
           new BloomEffect({
-            luminanceThreshold: 0.2,
-            luminanceSmoothing: 0,
-            resolutionScale: 1
+            luminanceThreshold: 0.5,
+            luminanceSmoothing: 0.5,
+            resolutionScale: 0.5
           })
         );
 
-        const smaaPass = new EffectPass(
-          this.camera,
-          new SMAAEffect({
-            preset: SMAAPreset.MEDIUM,
-            searchImage: SMAAEffect.searchImageDataURL,
-            areaImage: SMAAEffect.areaImageDataURL
-          })
-        );
         this.renderPass.renderToScreen = false;
-        this.bloomPass.renderToScreen = false;
-        smaaPass.renderToScreen = true;
+        this.bloomPass.renderToScreen = true;
         this.composer.addPass(this.renderPass);
         this.composer.addPass(this.bloomPass);
-        this.composer.addPass(smaaPass);
       }
 
       loadAssets() {
-        const assets = this.assets;
         return new Promise((resolve) => {
-          const manager = new THREE.LoadingManager(resolve);
-
-          const searchImage = new Image();
-          const areaImage = new Image();
-          assets.smaa = {};
-          searchImage.addEventListener("load", function () {
-            assets.smaa.search = this;
-            manager.itemEnd("smaa-search");
-          });
-
-          areaImage.addEventListener("load", function () {
-            assets.smaa.area = this;
-            manager.itemEnd("smaa-area");
-          });
-          manager.itemStart("smaa-search");
-          manager.itemStart("smaa-area");
-
-          searchImage.src = SMAAEffect.searchImageDataURL;
-          areaImage.src = SMAAEffect.areaImageDataURL;
+          // Skip loading SMAA assets for performance
+          resolve();
         });
       }
 
@@ -515,7 +352,27 @@ const Hyperspeed = ({ effectOptions = {
         this.speedUpTarget = 0;
       }
 
+      pause() {
+        this.isPaused = true;
+      }
+
+      resume() {
+        this.isPaused = false;
+        this.clock.start();
+        this.tick();
+      }
+
+      visibilityCheck() {
+        if (document.hidden) {
+          this.pause();
+        } else {
+          this.resume();
+        }
+      }
+
       update(delta) {
+        if (this.isPaused) return;
+        
         let lerpPercentage = Math.exp(-(-60 * Math.log2(1 - 0.1)) * delta);
         this.speedUp += lerp(
           this.speedUp,
@@ -554,10 +411,6 @@ const Hyperspeed = ({ effectOptions = {
         if (updateCamera) {
           this.camera.updateProjectionMatrix();
         }
-
-        if (this.options.isHyper) {
-          console.log(this.options.isHyper);
-        }
       }
 
       render(delta) {
@@ -566,18 +419,37 @@ const Hyperspeed = ({ effectOptions = {
 
       dispose() {
         this.disposed = true;
+        this.isPaused = true;
         
+        // Clean up all geometries and materials
+        this.scene.traverse(child => {
+          if (child.isMesh) {
+            child.geometry.dispose();
+            if (child.material) {
+              if (Array.isArray(child.material)) {
+                child.material.forEach(m => m.dispose());
+              } else {
+                child.material.dispose();
+              }
+            }
+          }
+        });
+
         if (this.renderer) {
           this.renderer.dispose();
+          this.renderer.forceContextLoss();
         }
+        
         if (this.composer) {
           this.composer.dispose();
         }
+        
         if (this.scene) {
           this.scene.clear();
         }
         
         window.removeEventListener("resize", this.onWindowResize.bind(this));
+        document.removeEventListener('visibilitychange', this.visibilityCheck);
         if (this.container) {
           this.container.removeEventListener("mousedown", this.onMouseDown);
           this.container.removeEventListener("mouseup", this.onMouseUp);
@@ -589,45 +461,28 @@ const Hyperspeed = ({ effectOptions = {
         this.composer.setSize(width, height, updateStyles);
       }
 
-      tick() {
+      tick(currentTime = performance.now()) {
         if (this.disposed || !this) return;
-        if (resizeRendererToDisplaySize(this.renderer, this.setSize)) {
-          const canvas = this.renderer.domElement;
-          this.camera.aspect = canvas.clientWidth / canvas.clientHeight;
-          this.camera.updateProjectionMatrix();
+        
+        const elapsed = currentTime - this.lastFrameTime;
+        const secondsPerFrame = 1000 / this.targetFPS;
+        
+        if (elapsed > secondsPerFrame) {
+          if (resizeRendererToDisplaySize(this.renderer, this.setSize)) {
+            const canvas = this.renderer.domElement;
+            this.camera.aspect = canvas.clientWidth / canvas.clientHeight;
+            this.camera.updateProjectionMatrix();
+          }
+          
+          const delta = this.clock.getDelta();
+          this.render(delta);
+          this.update(delta);
+          this.lastFrameTime = currentTime;
         }
-        const delta = this.clock.getDelta();
-        this.render(delta);
-        this.update(delta);
+        
         requestAnimationFrame(this.tick);
       }
     }
-
-    const distortion_uniforms = {
-      uDistortionX: { value: new THREE.Vector2(80, 3) },
-      uDistortionY: { value: new THREE.Vector2(-40, 2.5) }
-    };
-
-    const distortion_vertex = `
-      #define PI 3.14159265358979
-      uniform vec2 uDistortionX;
-      uniform vec2 uDistortionY;
-      float nsin(float val){
-        return sin(val) * 0.5 + 0.5;
-      }
-      vec3 getDistortion(float progress){
-        progress = clamp(progress, 0., 1.);
-        float xAmp = uDistortionX.r;
-        float xFreq = uDistortionX.g;
-        float yAmp = uDistortionY.r;
-        float yFreq = uDistortionY.g;
-        return vec3( 
-          xAmp * nsin(progress * PI * xFreq - PI / 2.),
-          yAmp * nsin(progress * PI * yFreq - PI / 2.),
-          0.
-        );
-      }
-    `;
 
     const random = base => {
       if (Array.isArray(base)) return Math.random() * (base[1] - base[0]) + base[0];
@@ -662,7 +517,7 @@ const Hyperspeed = ({ effectOptions = {
           new THREE.Vector3(0, 0, 0),
           new THREE.Vector3(0, 0, -1)
         );
-        let geometry = new THREE.TubeGeometry(curve, 40, 1, 8, false);
+        let geometry = new THREE.TubeGeometry(curve, 20, 1, 8, false); // Reduced segments
 
         let instanced = new THREE.InstancedBufferGeometry().copy(geometry);
         instanced.instanceCount = options.lightPairsPerRoadWay * 2;
@@ -961,7 +816,7 @@ const Hyperspeed = ({ effectOptions = {
 
       createPlane(side, width, isRoad) {
         const options = this.options;
-        let segments = 100;
+        let segments = 20; // Reduced from 100
         const geometry = new THREE.PlaneGeometry(
           isRoad ? options.roadWidth : options.islandWidth,
           options.length,
@@ -1113,6 +968,14 @@ const Hyperspeed = ({ effectOptions = {
       const container = document.getElementById('lights');
       const options = { ...effectOptions };
       options.distortion = distortions[options.distortion];
+
+      // Adjust settings for mobile devices
+      const isMobile = window.innerWidth < 768;
+      if (isMobile) {
+        options.lightPairsPerRoadWay = 10;
+        options.fov = 60;
+        options.fovSpeedUp = 90;
+      }
 
       const myApp = new App(container, options);
       appRef.current = myApp;

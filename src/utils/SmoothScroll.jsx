@@ -1,33 +1,26 @@
-import { useEffect } from 'react';
-import Lenis from 'lenis';
+// src/utils/SmoothScroll.jsx
+import { useEffect } from "react"
+import Lenis from "@studio-freight/lenis"
 
-const SmoothScroll = ({ children }) => {
+export default function SmoothScroll({ children }) {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      direction: 'vertical',
-      gestureDirection: 'vertical',
-      smooth: true,
-      mouseMultiplier: 1,
-      smoothTouch: false,
-      touchMultiplier: 2,
-      infinite: false,
-    });
+      duration: 10,     // smooth duration
+      lerp: 0.05,        // smooth inertia (lower = smoother, slower)
+      smoothWheel: true, // enable smooth wheel scroll
+      smoothTouch: false // keep touch scroll normal
+    })
 
     function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
+      lenis.raf(time)
+      requestAnimationFrame(raf)
     }
-
-    requestAnimationFrame(raf);
+    requestAnimationFrame(raf)
 
     return () => {
-      lenis.destroy();
-    };
-  }, []);
+      lenis.destroy() // cleanup
+    }
+  }, [])
 
-  return <>{children}</>;
-};
-
-export default SmoothScroll;
+  return <>{children}</>
+}

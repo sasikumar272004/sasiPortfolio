@@ -34,7 +34,7 @@ const items = [
 
 const Fourth = () => {
   return (
-    <div id="project" className="h-fit  z-[2000] flex flex-col justify-end overflow-hidden bg-[#ffffff]">
+    <div id="project" className="h-fit  z-[2000] flex flex-col justify-end overflow-hidden bg-[#fcfcfc]">
       <div className="h-[150vh] w-full relative overflow-hidden">
         <h1 className="absolute top-0 left-0 text-7xl lg:text-7xl md:text-5xl sm:text-2xl pt-7 gss">MY WORK </h1>
         <GridMotion items={items} />

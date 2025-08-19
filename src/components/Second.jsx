@@ -3,6 +3,11 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import ScrollReveal from './UI/ScrollReveal';
 import Hyperspeed from './UI/Hyperspeed';
+import { motion } from "framer-motion";
+import Threads from './UI/Threads';
+
+
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -36,6 +41,15 @@ const Second = () => {
     return () => ctx.revert();
   }, []);
 
+  const paths = [
+  // original 4
+  "M0,1030 C300,280 600,680 1000,230 S1600,680 2000,80",
+  "M0,930 C400,200 800,750 1200,230 S1800,750 2000,70",
+
+  // extra 4 (more dramatic / curvier)
+  "M0,1150 C200,100 900,1000 1400,150 S1900,900 2000,90",
+  "M0,980 C350,120 850,900 1300,200 S1750,950 2000,60",
+];
   return (
     <div className="w-full pt-50 text-white bg-black overflow-x-hidden">
       <div className=" flex items-center justify-center text-center px-6">
@@ -69,71 +83,80 @@ const Second = () => {
 
 </div>
 
-
-
-
-<div className="absolute bottom-6  right-10 text-xs text-[#e3dcdc] italic">
-  <span className=" ">double tap</span>
-</div>
- <div className="pointer-events-none absolute  bottom-0 w-full h-[200px] z-10" 
-       style={{ 
-         background: 'linear-gradient(to bottom, transparent ,  rgba(255,255,255,1))' 
-       }} 
+ <div className=' absolute top-[45%]' style={{ width: '100%', height:'100vh' }}>
+  <Threads
+    amplitude={1.3}
+    distance={0.4}
+    enableMouseInteraction={true}
   />
+</div>
+
+<motion.svg
+      viewBox="0 0 2000 600"
+      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[200vw] h-[70vh]"
+    >
+      {paths.map((d, i) => (
+        <motion.path
+          key={i}
+          d={d}
+          stroke={'#cddf85'} // unique gradient for each
+          strokeWidth={.25 + (i % 1)} // alternate thickness
+          fill="none"
+          strokeDasharray="104 2 10 50"
+          initial={{ strokeDashoffset: 2000 }}
+          animate={{ strokeDashoffset: 0 }}
+          transition={{
+            duration: 9 + i * 2,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+          style={{
+            filter: `drop-shadow(0px 0px ${
+              5 + i * 1.2
+            }px rgba(${80 + i * 20},${100 + i * 15},255,0.6))`,
+          }}
+        />
+      ))}
+
+      {/* 8 Gradient definitions */}
+      <defs>
+        <linearGradient id="grad0" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="#ff6b6b" />
+          <stop offset="100%" stopColor="#ffd93d" />
+        </linearGradient>
+        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="#6a11cb" />
+          <stop offset="100%" stopColor="#2575fc" />
+        </linearGradient>
+        <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="#43cea2" />
+          <stop offset="100%" stopColor="#185a9d" />
+        </linearGradient>
+        <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="#ff512f" />
+          <stop offset="100%" stopColor="#dd2476" />
+        </linearGradient>
+        <linearGradient id="grad4" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="#1f4037" />
+          <stop offset="100%" stopColor="#99f2c8" />
+        </linearGradient>
+        <linearGradient id="grad5" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="#f7971e" />
+          <stop offset="100%" stopColor="#ffd200" />
+        </linearGradient>
+        <linearGradient id="grad6" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="#4568dc" />
+          <stop offset="100%" stopColor="#b06ab3" />
+        </linearGradient>
+        <linearGradient id="grad7" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="#00c6ff" />
+          <stop offset="100%" stopColor="#0072ff" />
+        </linearGradient>
+      </defs>
+    </motion.svg>
 
 
-
-
-        <Hyperspeed
-  effectOptions={{
-    onSpeedUp: () => { },
-    onSlowDown: () => { },
-     distortion: 'turbulentDistortion',
-    length: 500,
-    roadWidth: 25,
-    islandWidth: 2,
-    lanesPerRoad: 5,
-    fov: 100,
-    fovSpeedUp: 160,
-    speedUp: 2,
-    carLightsFade: 0.4,
-    totalSideLightSticks: 200,
-    lightPairsPerRoadWay: 200,
-    shoulderLinesWidthPercentage: 2,
-    brokenLinesWidthPercentage: 0.1,
-    brokenLinesLengthPercentage: 0.5,
-    lightStickWidth: [0.12, 0.5],
-    lightStickHeight: [1.3, 1.7],
-    movingAwaySpeed: [60, 80],
-    movingCloserSpeed: [-120, -160],
-    carLightsLength: [400 * 0.1, 400 * 0.2],
-    carLightsRadius: [0.15, 0.14],
-    carWidthPercentage: [0.3, 0.5],
-    carShiftX: [-0.8, 0.8],
-    carFloorSeparation: [0, 0],
-  colors: {
-  roadColor: 0xfafafa,         // Extremely light road (almost white)
-  islandColor: 0xdddddd,       // Soft mid-light grey
-  background: 0xffffff,        // Pure white background
-  shoulderLines: 0xcccccc,     // Soft grey for lane edges
-  brokenLines: 0xdddddd,       // Just visible broken lines
-
-  // Shinier, sleek-looking greys for car bodies
- leftCars: [0xD856BF, 0x6750A2, 0xC247AC], 
- rightCars: [0xdadafa, 0xBEBAE3, 0x8F97E4], 
-
-  sticks: 0xbbbbbb,            // Subtle stick poles
-}
-
-
-
-
-      // Deep reddish-purple neon glow
-
-
-  }}
-/>
-      </div>
+</div>
 
       
     </div>
