@@ -64,7 +64,7 @@ const Third = () => {
   return (
     <div
       id="contact"
-      className={`h-[100vh] relative bg-gradient-to-br ${colors.pageGradient}`}
+      className={`h-[100vh] adfa relative bg-gradient-to-br ${colors.pageGradient}`}
       style={{ clipPath: "polygon(0% 0, 100% 0, 100% 100%, 0% 100%)" }}
     >
       {/* Notification Modal */}
