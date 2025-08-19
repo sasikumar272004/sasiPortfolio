@@ -7,8 +7,8 @@ const SKILL_PAGES = [
     skills: [
       { name: "Java", level: 60 },
       { name: "Node.js", level: 85 },
-      { name: "Python", level: 75 },
-      { name: "C++", level: 65 },
+      { name: "express", level: 90 },
+     
     ],
   },
   {
