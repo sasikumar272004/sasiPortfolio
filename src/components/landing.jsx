@@ -58,11 +58,7 @@ const Landing = () => {
         SASI <br></br> KUMAR
       </div>
       <div className=' absolute top-[45%]' style={{ width: '100%', height:'100vh' }}>
-  <Threads
-    amplitude={1.3}
-    distance={0.4}
-    enableMouseInteraction={true}
-  />
+
 </div>
       
       
