@@ -99,25 +99,25 @@ const ScrollReveal = ({
   }, [scrollContainerRef, enableBlur, baseRotation, baseOpacity, rotationEnd, wordAnimationEnd, blurStrength]);
 
   return (
-   <h2
+  <h2
   ref={containerRef}
-  className={`my-20 px-4 sm:px-8  ${containerClassName}`}
+  className={`my-20 sm:px-8 ${containerClassName}`}
 >
   <p
     className={`
-      
-      text-[clamp(2rem,2vw,4rem)]
-      
-      
-      s
+      text-[clamp(2.3rem,2.2vw,4.4rem)]  /* ~10% bigger */
       text-white
-      max-w-4xl
+      s
+      w-full
+      max-w-none
+      lg:whitespace-nowrap   /* no wrapping on large+ screens */
       ${textClassName}
     `}
   >
     {splitText}
   </p>
 </h2>
+
 
   );
 };

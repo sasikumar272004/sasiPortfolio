@@ -71,21 +71,7 @@
 }
 
 
-.gs{
-background: linear-gradient(
-  to bottom,
-  #fafafa 10%,
-  #bdbdbd 25%,
-  #b0b0b0 50%,
-  #cbcbcb 80%,
-  #fafafa 100%
-);
-   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
 
-}
 
 .gss{
   font-family: "Poiret One", sans-serif; 
@@ -106,6 +92,9 @@ background: linear-gradient(
   font-weight: 600;
 }
 
+.ks{
+  color: #050505;
+}
 
 
 

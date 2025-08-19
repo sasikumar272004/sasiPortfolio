@@ -39,15 +39,14 @@ const Second = () => {
   return (
     <div className="w-full pt-50 text-white bg-black overflow-x-hidden">
       <div className=" flex items-center justify-center text-center px-6">
-        <div className="rounded-[2rem] w-fit px-6  mx-auto">
+        <div className="rounded-[2rem] w-fit  mx-auto">
           <ScrollReveal
             baseOpacity={0.05}
             enableBlur={false}
             baseRotation={1}
             blurStrength={30}
           >
-            I DON'T JUST BUILD WEBSITES; I DESIGN EXPERIENCES THAT SPEAK.
-          </ScrollReveal>
+A web developer who builds clean, creative, and unforgettable experiences.          </ScrollReveal>
         </div>
       </div>
       {/* Zoom Section (Fullscreen + Parallax) */}
@@ -62,11 +61,10 @@ const Second = () => {
   <span className="block text-sm "></span>
 
 </div>
-<div className='absolute  text-center m:text-2xl md:text-4xl lg:text-5xl xl:text-5xl gs  text-gray-950'>
-  DESIGNED TO DOMINATE  
-• LIT TO EXPRESS  <br></br>
-  BUILT TO GLOW
-
+<div className="absolute text-center text-2xl  mb-50 max-w-[80vw] sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-extralight text-[#b1b1b1]">
+   For me, coding isn’t just work—it’s craft.
+I shape designs, write clean code, <span className='text-[#383737] ' > and create experiences that feel effortless to use.
+ </span>
 </div>
 
 
@@ -89,7 +87,7 @@ const Second = () => {
     onSpeedUp: () => { },
     onSlowDown: () => { },
      distortion: 'turbulentDistortion',
-    length: 500,
+    length: 1000,
     roadWidth: 25,
     islandWidth: 2,
     lanesPerRoad: 5,
@@ -98,7 +96,7 @@ const Second = () => {
     speedUp: 2,
     carLightsFade: 0.4,
     totalSideLightSticks: 200,
-    lightPairsPerRoadWay: 200,
+    lightPairsPerRoadWay: 300,
     shoulderLinesWidthPercentage: 2,
     brokenLinesWidthPercentage: 0.1,
     brokenLinesLengthPercentage: 0.5,

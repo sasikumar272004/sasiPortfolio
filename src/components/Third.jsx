@@ -57,7 +57,7 @@ const Third = () => {
   inputBorder: "border-gray-400",
 
   buttonGradient: "from-[#cddf85] to-[#e6e6d4]",   // muted lemon → dusty ivory
-  buttonHoverGradient: "from-[#3d3d3d] via-[#555555] to-[#777777]", // bold dusty steel hover
+  buttonHoverGradient: "from-[#cddf85] to-[#e6e6d4]", // bold dusty steel hover
 };
 
 
