@@ -30,7 +30,7 @@ import s26 from "../assets/s26.png";
 import s27 from "../assets/s27.png";
 
 const items = [
-  s5, s24, s2, s19, s3,
+  s5, s24, s2, s19, s26,
   s26, s7, s8, s9, s4,
   s11, s18, s13, s14, s15,
   s10, s17, s21, s16, s8,s22,s23,s1,s12,s20,s14,s22
