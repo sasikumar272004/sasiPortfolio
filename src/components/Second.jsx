@@ -61,11 +61,16 @@ A web developer who builds clean, creative, and unforgettable experiences.      
   <span className="block text-sm "></span>
 
 </div>
-<div className="absolute text-center text-2xl  mb-50 max-w-[80vw] sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-extralight text-[#b1b1b1]">
+<div className="absolute text-center text-2xl mb-50 max-w-[80vw] 
+  sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-extralight 
+  bg-gradient-to-r from-[#cdcdcd]  to-[#646464] bg-clip-text text-transparent">
    For me, coding isn’t just work—it’s craft.
-I shape designs, write clean code, <span className='text-[#383737] ' > and create experiences that feel effortless to use.
- </span>
+   I shape designs, write clean code, 
+   <span className="bg-gradient-to-r from-[#FBCFE8] via-[#FDB4D7] to-[#A5B4FC] bg-clip-text text-transparent font-light">
+      and create experiences that feel effortless to use.
+   </span>
 </div>
+
 
 
 

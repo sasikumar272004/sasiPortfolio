@@ -46,9 +46,9 @@ const Skills = () => {
         {/* LEFT COLUMN */}
         <div className="flex flex-col justify-between h-full">
           <div className="animate-on-scroll">
-            <h1 className="text-4xl md:text-6xl scale-y-[1.1] text-[#bebcbc] leading-tight">
+            <h1 className="text-4xl font-extralight md:text-6xl scale-y-[1.1] text-[#bebcbc] leading-tight">
               WHAT I <br /> ACTUALLY <br />{" "}
-              <span className="text-[#505050]">DO..!!</span>
+              <span className="text-[#505050] font-bold">DO..!!</span>
             </h1>
           </div>
 
@@ -132,7 +132,7 @@ const Skills = () => {
 
         {/* Bottom */}
         <div className="animate-on-scroll rounded-2xl col-span-2 flex items-center justify-center p-4">
-          <h2 className="text-[#c4c4c4] text-lg md:text-3xl font-extralight text-end">
+          <h2 className="text-[#707070] gss text-lg md:text-3xl font-extralight text-end">
             From sleek UI/UX to robust full-stack builds,{" "}
             <span className="text-[#585858]">
               I create digital products that look and perform impeccably.
