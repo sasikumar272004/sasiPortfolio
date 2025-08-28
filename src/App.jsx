@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Landing from './components/landing';
 import './App.css'; 
 import './index.css';
@@ -9,22 +9,28 @@ import Third from './components/Third';
 import Fourth from './components/Fourth';
 import Skills from './components/Skills';
 
+// ✅ Import GA
+import ReactGA from "react-ga4";
+
 const App = () => {
+  useEffect(() => {
+    // ✅ Initialize Google Analytics
+    ReactGA.initialize("G-XRPLCRK4GV");
+
+    // ✅ Send pageview on first load
+    ReactGA.send("pageview");
+  }, []);
+
   return (
     <div className="overflow-hidden">
-      {/* Navbar is fixed, visible across all pages */}
       <Navbar />
-
-      {/* Each section should start below the fixed navbar */}
-      <div >
+      <div>
         <Landing />
         <Second />
         <Skills />
         <Fourth />
         <Third />
       </div>
-
-      
     </div>
   );
 };
