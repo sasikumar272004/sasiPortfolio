@@ -11,36 +11,31 @@ import {
 
 const DEFAULT_ITEMS = [
   {
-    title: "Responsive Web Design",
-    description: "Crafting fully responsive, mobile-first websites with modern layouts and cross-browser compatibility.",
+    title: "Frontend Development",
+    description: "Building responsive, interactive, and visually stunning interfaces using React, Next.js, Tailwind CSS, Framer Motion, and GSAP.",
     id: 1,
     icon: <FiLayout className="h-[16px] w-[16px] text-white" />,
   },
   {
-    title: "Advanced Animations & Interactions",
-    description: "Implementing smooth, interactive animations using Framer Motion, GSAP, and CSS for an engaging user experience.",
+    title: "Backend Development",
+    description: "Designing and developing robust APIs, handling authentication, and managing databases with Node.js, Express, and MongoDB.",
     id: 2,
-    icon: <FiCircle className="h-[16px] w-[16px] text-white" />,
+    icon: <FiCode className="h-[16px] w-[16px] text-white" />,
   },
   {
-    title: "Component Architecture",
-    description: "Building reusable, scalable, and maintainable UI components for large-scale applications.",
+    title: "DevOps & Deployment",
+    description: "Streamlining CI/CD pipelines, containerization with Docker, cloud deployments with AWS/Vercel, and monitoring performance at scale.",
     id: 3,
     icon: <FiLayers className="h-[16px] w-[16px] text-white" />,
   },
   {
-    title: "UI/UX Design Implementation",
-    description: "Translating modern UI/UX designs into pixel-perfect, interactive frontend experiences.",
+    title: "Database & Data Management",
+    description: "Structuring, optimizing, and maintaining SQL/NoSQL databases for efficient and secure data storage and retrieval.",
     id: 4,
     icon: <FiFileText className="h-[16px] w-[16px] text-white" />,
   },
-  {
-    title: "Full-Stack Integration",
-    description: "Connecting frontend interfaces with APIs, managing state, and creating dynamic web applications with React, Next.js, or other frameworks.",
-    id: 5,
-    icon: <FiCode className="h-[16px] w-[16px] text-white" />,
-  },
 ];
+
 
 
 const DRAG_BUFFER = 0;

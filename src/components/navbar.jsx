@@ -26,38 +26,43 @@ const Navbar = () => {
     { name: 'Contact', id: '#contact' },
   ];
 
-  // Smooth scroll using GSAP
   const scrollToSection = (id) => {
     const element = document.querySelector(id);
     if (element) {
       gsap.to(window, {
-        duration: 1,             // 1 second smooth scroll
-        scrollTo: { y: element, offsetY: 70 }, // offset for navbar
-        ease: 'power2.inOut',    // smooth easing
+        duration: 1,
+        scrollTo: { y: element, offsetY: 80 },
+        ease: 'power2.inOut',
       });
     }
   };
 
   return (
     <div
-      className={`fixed top-4 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-500 ease-[linear] ${
-        show ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-16'
+      className={`fixed top-6 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-500 ${
+        show ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-20'
       }`}
     >
-      <nav className="px-6 sm:px-10 md:px-14 lg:px-16 py-2 sm:py-3 lg:py-4 rounded-full bg-gradient-to-br from-gray-900/70 to-gray-800/70 backdrop-blur-3xl border border-gray-700/50 shadow-[0_0_100px_rgba(0,0,0,0.2)] hover:shadow-[0_0_160px_rgba(0,0,0,0.3)] transition-all duration-700 flex gap-6 sm:gap-10 md:gap-12 lg:gap-16 items-center overflow-x-auto whitespace-nowrap">
-        <ul className="flex gap-6 sm:gap-10 md:gap-12 lg:gap-14 text-sm sm:text-base md:text-[17px] lg:text-[18px] font-medium font-[Playfair Display] tracking-wide text-white">
+      <nav
+        className="px-8 sm:px-12 md:px-16 py-3 rounded-full border backdrop-blur-[16px] flex gap-8 sm:gap-12 items-center overflow-x-auto whitespace-nowrap shadow-md transition-all duration-700
+          bg-white/10 dark:bg-black/40 border-white/20 dark:border-black/40"
+      >
+        <ul className="flex gap-8 sm:gap-12 text-base sm:text-lg md:text-xl font-light font-[Playfair Display] tracking-wide text-white">
           {navItems.map((item) => (
             <li
               key={item.name}
-              className="group relative cursor-pointer transition-all duration-500 hover:text-yellow-300"
+              className="relative cursor-pointer group"
               onClick={() => scrollToSection(item.id)}
             >
-              <span className="inline-block relative px-1 sm:px-2">
+              <span className="inline-block relative px-2 py-1">
                 {item.name}
-                <span className="absolute bottom-0 left-1/2 w-0 h-[2px] bg-yellow-300 rounded-full transition-all duration-500 ease-out group-hover:w-full group-hover:left-0" />
-                <span className="absolute bottom-0 left-1/2 w-0 h-[2px] bg-yellow-300/20 blur-sm rounded-full transition-all duration-700 ease-out group-hover:w-full group-hover:left-0" />
+                {/* Primary underline */}
+                <span className="absolute bottom-0 left-1/2 w-0 h-[2px] rounded-full transition-all duration-500 ease-out bg-white group-hover:w-full group-hover:left-0" />
+                {/* Soft glow */}
+                <span className="absolute bottom-0 left-1/2 w-0 h-[2px] rounded-full transition-all duration-700 ease-out blur-sm bg-white/40 group-hover:w-full group-hover:left-0" />
               </span>
-              <span className="absolute -inset-2 rounded-full opacity-0 group-hover:opacity-40 transition-all duration-700 blur-xl bg-yellow-300/20 pointer-events-none" />
+              {/* Hover halo */}
+              <span className="absolute -inset-2 rounded-full opacity-0 group-hover:opacity-20 transition-all duration-700 blur-xl pointer-events-none bg-white/20" />
             </li>
           ))}
         </ul>

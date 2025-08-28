@@ -45,14 +45,14 @@ const Landing = () => {
       
 
       {/* HI I'M - Top Left */}
-      <h1 className="absolute ss top-30 left-10 text-3xl sm:text-4xl md:text-7xl lg:text-9xl font-mono text-amber-400 tracking-widest font-italiana">
+      <h1 className="absolute ss top-30 left-10 text-5xl sm:text-5xl md:text-7xl lg:text-9xl font-mono text-amber-400 tracking-widest font-italiana">
   HELLO<br />I'M
 </h1>
 
 
       {/* SASI KUMAR - Bottom Right */}
       <div
-        className="absolute bottom-30 mt font-extrabold right-10 font-extralight scale-y-[1.4] text-3xl sm:text-4xl md:text-7xl lg:text-9xl font-extrabold font-sans text-transparent bg-clip-text tracking-tight text-end"
+        className="absolute bottom-30 mt font-extrabold right-10 font-extralight scale-y-[1.4] text-5xl sm:text-5xl md:text-7xl lg:text-9xl font-extrabold font-sans text-transparent bg-clip-text tracking-tight text-end"
         
       >
         SASI <br></br> KUMAR

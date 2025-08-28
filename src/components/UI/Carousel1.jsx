@@ -169,7 +169,7 @@ export default function Carousel1({
             <div key={i} className="w-full">
               <div className="flex justify-between mb-2 text-xs text-gray-100 font-medium tracking-wide">
                 <span>{skill.name}</span>
-                <span>{skill.level}%</span>
+               
               </div>
               <div className="w-full bg-[#222] rounded-full h-[6px] overflow-hidden">
                 <div
